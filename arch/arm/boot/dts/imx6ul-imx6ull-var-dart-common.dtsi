@@ -81,7 +81,9 @@
 		};
 	};
 
-	sound {
+	/*sound {
+
+	
 		compatible = "fsl,imx-audio-wm8731";
 		model = "wm8731-audio";
 		cpu-dai = <&sai2>;
@@ -94,6 +96,7 @@
 	};
 
 	keys {
+
 		compatible = "gpio-keys";
 
 		user {
@@ -104,13 +107,14 @@
 	};
 
 	leds {
+	
 		compatible = "gpio-leds";
 
 		d16_led {
 			gpios = <&gpio4 20 0>;
 			linux,default-trigger = "heartbeat";
 		};
-	};
+	};*/
 };
 
 &cpu0 {
@@ -198,6 +202,8 @@
 };
 
 &lcdif {
+status = "disabled";
+/*
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_lcdif_dat
 		     &pinctrl_lcdif_ctrl>;
@@ -226,7 +232,7 @@
 				pixelclk-active = <0>;
 			};
 		};
-	};
+	};*/
 };
 
 &pwm1 {
@@ -240,12 +246,12 @@
 };
 
 &sai2 {
-	pinctrl-names = "default";
+	/*pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_sai2>;
 	assigned-clocks = <&clks IMX6UL_CLK_SAI2_SEL>,<&clks IMX6UL_CLK_SAI2>;
 	assigned-clock-parents = <&clks IMX6UL_CLK_PLL4_AUDIO_DIV>;
-	assigned-clock-rates = <0>, <11289600>;
-	status = "okay";
+	assigned-clock-rates = <0>, <11289600>;*/
+	status = "disabled";
 };
 
 &adc1 {
@@ -254,16 +260,16 @@
 };
 
 &tsc {
-	pinctrl-names = "default";
+	/*pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_tsc>;
 	xnur-gpio = <&gpio1 3 GPIO_ACTIVE_LOW>;
 	measure_delay_time = <0xffff>;
 	pre_charge_time = <0xfff>;
-#ifdef WIFI
-	status = "disabled";
+#ifdef WIFI*/
+	status = "disabled";/*
 #else
 	status = "okay";
-#endif
+#endif*/
 };
 
 /* Console UART */
@@ -399,7 +405,7 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_i2c2>;
 	status = "okay";
-
+/*
 	codec: wm8731@1a {
 		compatible = "wlf,wm8731";
 		reg = <0x1a>;
@@ -417,7 +423,7 @@
 		touchscreen-inverted-x;
 		touchscreen-inverted-y;
 	};
-
+*/
 	/* DS1307 RTC module */
 	rtc@0x68 {
 		compatible = "dallas,ds1307";
@@ -427,7 +433,7 @@
 
 &ecspi1 {
 	fsl,spi-num-chipselects = <1>;
-	cs-gpios = <&gpio4 26 0>;
+	cs-gpios = <&gpio4 26 1>;
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_ecspi1_1>;
 	status = "okay";
@@ -507,7 +513,7 @@
 			>;
 		};
 
-		pinctrl_lcdif_dat: lcdifdatgrp {
+		/*pinctrl_lcdif_dat: lcdifdatgrp {
 			fsl,pins = <
 				MX6UL_PAD_LCD_DATA02__LCDIF_DATA02	0x79
 				MX6UL_PAD_LCD_DATA03__LCDIF_DATA03	0x79
@@ -536,7 +542,7 @@
 				MX6UL_PAD_LCD_ENABLE__LCDIF_ENABLE	0x79
 			>;
 		};
-
+*/
 		pinctrl_pwm1: pwm1grp {
 			fsl,pins = <
 				MX6UL_PAD_LCD_DATA00__PWM1_OUT		0x110b0
@@ -655,7 +661,7 @@
 			>;
 		};
 
-		pinctrl_tsc: tscgrp {
+		/*pinctrl_tsc: tscgrp {
 			fsl,pins = <
 				MX6UL_PAD_GPIO1_IO01__GPIO1_IO01	0xb0
 				MX6UL_PAD_GPIO1_IO02__GPIO1_IO02	0xb0
@@ -671,9 +677,9 @@
 				MX6UL_PAD_CSI_DATA06__SAI1_RX_DATA	0x11088
 				MX6UL_PAD_CSI_DATA07__SAI1_TX_DATA	0x11088
 			>;
-		};
+		};*/
 
-		pinctrl_sai2: sai2grp {
+		/*pinctrl_sai2: sai2grp {
 			fsl,pins = <
 				MX6UL_PAD_JTAG_TDI__SAI2_TX_BCLK	0x17088
 				MX6UL_PAD_JTAG_TDO__SAI2_TX_SYNC	0x17088
@@ -681,7 +687,7 @@
 				MX6UL_PAD_JTAG_TCK__SAI2_RX_DATA	0x11088
 				MX6UL_PAD_JTAG_TMS__CCM_CLKO1		0x17088
 			>;
-		};
+		};*/
 
 		pinctrl_wdog: wdoggrp {
 			fsl,pins = <
