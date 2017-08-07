@@ -52,7 +52,7 @@
 			regulator-name = "VWLAN_1V8";
 			regulator-min-microvolt = <1800000>;
 			regulator-max-microvolt = <1800000>;
-			gpio = <&gpio2 7 GPIO_ACTIVE_HIGH>;	
+			gpio = <&gpio2 6 GPIO_ACTIVE_HIGH>;	
 			/* gpio = <&gpio5 2 GPIO_ACTIVE_HIGH>;	WL_1V8_ON: SNVS_TAMPER2 (gpio5_2) */
 			enable-active-high;
 			regulator-always-on;
@@ -65,7 +65,7 @@
 			regulator-name = "VSD_3V3";
 			regulator-min-microvolt = <3300000>;
 			regulator-max-microvolt = <3300000>;
-			gpio = <&gpio2 6 GPIO_ACTIVE_HIGH>;	/* WL_REG_ON: SNVS_TAMPER6 (gpio5_6) */
+			gpio = <&gpio2 7 GPIO_ACTIVE_HIGH>;	/* WL_REG_ON: SNVS_TAMPER6 (gpio5_6) */
 			enable-active-high;
 			regulator-always-on;
 		};
