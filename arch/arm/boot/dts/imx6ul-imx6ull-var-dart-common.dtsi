@@ -134,7 +134,7 @@
 	assigned-clock-rates = <812851200>;
 };
 
-&fec1 {
+&fec2 {
 /*	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_enet1>;
 	phy-mode = "rmii";
@@ -167,12 +167,12 @@
 			reg = <1>;
 		};*/
 
-		ethphy1: ethernet-phy@3 {
+		ethphy1: ethernet-phy@1 {
 			compatible = "ethernet-phy-ieee802.3-c22";
 			micrel,rmii-reference-clock-select-25-mhz;
 			clocks = <&rmii_ref_clk>;
 			clock-names = "rmii-ref";
-			reg = <3>;
+			reg = <1>;
 		};
 	};
 };
