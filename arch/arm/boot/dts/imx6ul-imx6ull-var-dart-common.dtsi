@@ -98,7 +98,13 @@
 		compatible = "gpio-keys";
 
 		user {
-			gpios = <&gpio1 0 GPIO_ACTIVE_LOW>;
+			gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
+			linux,code = <KEY_BACK>;
+			gpio-key,wakeup;
+		};
+
+		mowement {
+			gpios = <&gpio5 7 GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_BACK>;
 			gpio-key,wakeup;
 		};
@@ -417,11 +423,12 @@
 		touchscreen-inverted-y;
 	};
 
-	/* DS1307 RTC module */
 	rtc@0x68 {
-		compatible = "dallas,ds1307";
-		reg = <0x68>;
-	};
+	compatible = "isil,isl12057";
+	reg = <0x68>;
+	interrupt-parent = <&gpio5>;
+	interrupts = <8 IRQ_TYPE_EDGE_FALLING>;
+};
 };
 
 
