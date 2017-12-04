@@ -92,17 +92,41 @@
 			"Headphone Jack",	"RHPOUT",
 			"LLINEIN",		"Line Jack",
 			"RLINEIN",		"Line Jack";
-	};*/
+	};
 
 	keys {
 		compatible = "gpio-keys";
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_gpio_keys>;
 
-		user {
+		back {
+			label = "Back";
 			gpios = <&gpio5 7 GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_BACK>;
 			gpio-key,wakeup;
 		};
 
+		
+	};
+*/
+	gpio-keys {
+		compatible = "gpio-keys";
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_gpio_keys>;
+
+		back {
+			label = "Back";
+			gpios = <&gpio5 7 GPIO_ACTIVE_HIGH>;
+			linux,code = <KEY_BACK>;
+			gpio-key,wakeup;
+		};
+
+		ignition {
+			label = "Back";
+			gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
+			linux,code = <KEY_BACK>;
+			gpio-key,wakeup;
+		};
 		
 	};
 
@@ -447,12 +471,20 @@
 		pinctrl_hog_1: hoggrp-1 {
 			fsl,pins = <
 				MX6UL_PAD_CSI_HSYNC__GPIO4_IO20		0x1b0b0	/* User LED */
-				MX6UL_PAD_GPIO1_IO00__GPIO1_IO00	0x17059	/* ADC1_0 - Ignition*/
+				MX6UL_PAD_GPIO1_IO00__GPIO1_IO00	0x1b0b0	/* ADC1_0 - Ignition*/
 				MX6UL_PAD_GPIO1_IO07__ENET2_MDC		0x1b0b0
 				MX6UL_PAD_GPIO1_IO06__ENET2_MDIO	0x1b0b0
 #ifdef WIFI
 				MX6UL_PAD_GPIO1_IO03__REF_CLK_32K	0x03029	/* WLAN Slow Clock */
 #endif
+			>;
+		};
+
+	pinctrl_gpio_keys:gpio_keysgrp{
+			fsl,pins = <
+				
+				MX6UL_PAD_SNVS_TAMPER7__GPIO5_IO07	0x1b0b0/*rtc*/
+				MX6UL_PAD_SNVS_TAMPER8__GPIO5_IO08	0x1b0b0/*ACC*/
 			>;
 		};
 
