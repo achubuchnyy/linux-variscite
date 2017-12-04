@@ -20,13 +20,13 @@
 		reg = <0x80000000 0x20000000>;
 	};
 
-	backlight {
+/*	backlight {
 		compatible = "pwm-backlight";
 		pwms = <&pwm1 0 20000>;
 		brightness-levels = <0 4 8 16 32 64 128 255>;
 		default-brightness-level = <6>;
 		status = "okay";
-	};
+	};*/
 
 	pxp_v4l2 {
 		compatible = "fsl,imx6ul-pxp-v4l2", "fsl,imx6sx-pxp-v4l2", "fsl,imx6sl-pxp-v4l2";
@@ -82,7 +82,7 @@
 		};
 	};
 
-	sound {
+/*	sound {
 		compatible = "fsl,imx-audio-wm8731";
 		model = "wm8731-audio";
 		cpu-dai = <&sai2>;
@@ -92,23 +92,21 @@
 			"Headphone Jack",	"RHPOUT",
 			"LLINEIN",		"Line Jack",
 			"RLINEIN",		"Line Jack";
-	};
+	};*/
 
 	keys {
 		compatible = "gpio-keys";
 
 		user {
-			gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
-			linux,code = <KEY_BACK>;
-			gpio-key,wakeup;
-		};
-
-		mowement {
 			gpios = <&gpio5 7 GPIO_ACTIVE_LOW>;
 			linux,code = <KEY_BACK>;
 			gpio-key,wakeup;
 		};
+
+		
 	};
+
+	/*
 
 	leds {
 		compatible = "gpio-leds";
@@ -118,6 +116,7 @@
 			linux,default-trigger = "heartbeat";
 		};
 	};
+*/
 };
 
 &cpu0 {
@@ -202,7 +201,7 @@
 	fsl,cpu_pdnscr_iso = <0x1>;
 	fsl,ldo-bypass = <0>; /* DCDC, ldo-enable */
 };
-
+/*
 &lcdif {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_lcdif_dat
@@ -234,7 +233,7 @@
 		};
 	};
 };
-
+*/
 &pwm1 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_pwm1>;
@@ -244,7 +243,7 @@
 &pxp {
 	status = "okay";
 };
-
+/*
 &sai2 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_sai2>;
@@ -253,12 +252,12 @@
 	assigned-clock-rates = <0>, <11289600>;
 	status = "okay";
 };
-
+*/
 &adc1 {
 	vref-supply = <&touch_3v3_regulator>;
 	status = "okay";
 };
-
+/*
 &tsc {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_tsc>;
@@ -271,6 +270,7 @@
 	status = "okay";
 #endif
 };
+*/
 
 /* Console UART */
 &uart1 {
@@ -405,14 +405,14 @@
 	pinctrl-0 = <&pinctrl_i2c2>;
 	status = "okay";
 
-	codec: wm8731@1a {
+	/*codec: wm8731@1a {
 		compatible = "wlf,wm8731";
 		reg = <0x1a>;
 		clocks = <&clks IMX6UL_CLK_SAI2>;
 		clock-names = "mclk";
-	};
+	};*/
 
-	ft5x06_ts@38 {
+	/*ft5x06_ts@38 {
 		compatible = "edt,edt-ft5x06";
 		reg = <0x38>;
 		interrupt-parent = <&gpio3>;
@@ -421,14 +421,14 @@
 		touchscreen-size-y = <480>;
 		touchscreen-inverted-x;
 		touchscreen-inverted-y;
-	};
+	};*/
 
 	rtc@0x68 {
 	compatible = "isil,isl12057";
 	reg = <0x68>;
 	interrupt-parent = <&gpio5>;
 	interrupts = <8 IRQ_TYPE_EDGE_FALLING>;
-};
+	};
 };
 
 
