@@ -115,13 +115,7 @@
 		pinctrl-0 = <&pinctrl_gpio_keys>;
 
 		back {
-			label = "Back";
-			gpios = <&gpio5 7 GPIO_ACTIVE_HIGH>;
-			linux,code = <KEY_BACK>;
-			gpio-key,wakeup;
-		};
-
-		ignition {
+			
 			label = "Back";
 			gpios = <&gpio1 0 GPIO_ACTIVE_HIGH>;
 			linux,code = <KEY_BACK>;
@@ -129,7 +123,20 @@
 		};
 		
 	};
+	keys {
+		compatible = "gpio-keys";
+		pinctrl-names = "default";
+		
+		back {
+			label = "Back";
+			gpios = <&gpio5 7 GPIO_ACTIVE_LOW>;
+			linux,code = <KEY_BACK>;
+			gpio-key,wakeup;
+		};
 
+		
+		
+	};
 	/*
 
 	leds {
