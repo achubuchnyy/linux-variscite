@@ -31,12 +31,12 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 
-		touch_3v3_regulator: touch_3v3_regulator {
+		/*touch_3v3_regulator: touch_3v3_regulator {
 			compatible = "regulator-fixed";
 			regulator-name = "touch_3v3_supply";
 			regulator-always-on;
 			status = "okay";
-		};
+		};*/
 
 #ifdef WIFI
 /* force VMMC1 to always on so BT can operate independently of Wi-Fi */
@@ -85,12 +85,12 @@
 			gpios = <&gpio5 7 0>;
 			gpio-key,wakeup;
 		};
-		button@22 {
+		/*button@22 {
 			label = "GPIO IGN";
 			linux,code = <103>;
 			gpios = <&gpio1 0 1>;
 			gpio-key,wakeup;
-		};
+		};*/
 	};
 
 };
@@ -294,12 +294,12 @@
 	};
 };
 
+
+#endif
+
 &usdhc2 {
 	status = "disabled";
 };
-#endif
-
-
 
 &i2c1 {
 	clock-frequency = <400000>;
