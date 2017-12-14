@@ -294,12 +294,12 @@
 	};
 };
 
-
-#endif
-
 &usdhc2 {
 	status = "disabled";
 };
+#endif
+
+
 
 &i2c1 {
 	clock-frequency = <400000>;
