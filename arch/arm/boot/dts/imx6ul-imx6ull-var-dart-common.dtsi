@@ -31,12 +31,12 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 
-		/*touch_3v3_regulator: touch_3v3_regulator {
+		touch_3v3_regulator: touch_3v3_regulator {
 			compatible = "regulator-fixed";
 			regulator-name = "touch_3v3_supply";
 			regulator-always-on;
 			status = "okay";
-		};*/
+		};
 
 #ifdef WIFI
 /* force VMMC1 to always on so BT can operate independently of Wi-Fi */
