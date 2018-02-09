@@ -93,7 +93,26 @@
 		};*/
 	};
 
+
+leds {
+        compatible = "gpio-leds";
+
+        pinctrl-names = "default";
+
+        user {
+
+            label = "debug";
+
+            gpios = <&gpio3 4 GPIO_ACTIVE_LOW>;
+
+            default-state = "on";
+
+        };
+
+    };
 };
+
+
 
 &cpu0 {
 	arm-supply = <&reg_arm>;
