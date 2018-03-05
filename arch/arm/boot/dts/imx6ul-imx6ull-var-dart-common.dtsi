@@ -313,9 +313,6 @@ leds {
 	};
 };
 
-&usdhc2 {
-	status = "disabled";
-};
 #endif
 
 
