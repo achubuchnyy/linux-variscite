@@ -45,7 +45,7 @@
 			regulator-name = "VWLAN_1V8";
 			regulator-min-microvolt = <1800000>;
 			regulator-max-microvolt = <1800000>;
-			gpio = <&gpio2 7 GPIO_ACTIVE_HIGH>;	/*WL_1V8_ON: SNVS_TAMPER2 (gpio5_2) */	
+			gpio = <&gpio2 7 GPIO_ACTIVE_HIGH>;	/*WL_1V8_ON: SNVS_TAMPER2 (gpio5_2) */
 			enable-active-high;
 			regulator-always-on;
 			startup-delay-us = <50000>;
@@ -253,11 +253,11 @@ leds {
 
 #ifdef WIFI
 /*  Wi-Fi/BT SD Card Slot Definition */
-&usdhc1 {
+&usdhc2 {
 	pinctrl-names = "default", "state_100mhz", "state_200mhz";
-	pinctrl-0 = <&pinctrl_usdhc1>;
-	pinctrl-1 = <&pinctrl_usdhc1_100mhz>;
-	pinctrl-2 = <&pinctrl_usdhc1_200mhz>;
+	pinctrl-0 = <&pinctrl_usdhc2>;
+	pinctrl-1 = <&pinctrl_usdhc2_100mhz>;
+	pinctrl-2 = <&pinctrl_usdhc2_200mhz>;
 	no-1-8-v;			/* removed by u-boot on DART-6UL-5G with Wi-Fi */
 	keep-power-in-suspend;
 	enable-sdio-wakeup;
@@ -266,7 +266,7 @@ leds {
 	non-removable;
 	status = "okay";
 };
-#else
+#endif
 &usdhc1 {
 	pinctrl-names = "default", "state_100mhz", "state_200mhz";
 	pinctrl-0 = <&pinctrl_usdhc1>;
@@ -279,7 +279,7 @@ leds {
 	status = "okay";
 };
 
-#endif
+
 #ifdef NAND
 &gpmi {
 	pinctrl-names = "default";
@@ -334,7 +334,7 @@ leds {
 	pinctrl-0 = <&pinctrl_i2c2>;
 	status = "okay";
 
-	
+
 	rtc@0x68 {
 	compatible = "isil,isl12057";
 	reg = <0x68>;
@@ -368,7 +368,7 @@ leds {
 	imx6ul-evk {
 		pinctrl_hog_1: hoggrp-1 {
 			fsl,pins = <
-				
+
 				MX6UL_PAD_GPIO1_IO00__GPIO1_IO00	0x1b0b0	/* ADC1_0 - Ignition*/
 				MX6UL_PAD_GPIO1_IO07__ENET2_MDC		0x1b0b0
 				MX6UL_PAD_GPIO1_IO06__ENET2_MDIO	0x1b0b0
@@ -421,7 +421,7 @@ leds {
 			>;
 		};
 
-	
+
 
 		pinctrl_pwm1: pwm1grp {
 			fsl,pins = <
@@ -489,7 +489,7 @@ leds {
 				MX6UL_PAD_SNVS_TAMPER1__GPIO5_IO01	0x1b0b1	/* SD card detect */
 			>;
 		};
-/*#ifdef WIFI
+#ifdef WIFI
 pinctrl_usdhc2: usdhc2grp {
 			fsl,pins = <
 				MX6UL_PAD_CSI_VSYNC__USDHC2_CLK		0x17059
@@ -521,7 +521,7 @@ pinctrl_usdhc2_200mhz: usdhc2grp200mhz {
 			>;
 		};
 #endif
-*/
+
 
 #ifdef NAND
 		pinctrl_gpmi_nand_1: gpmi-nand-1 {
@@ -560,7 +560,7 @@ pinctrl_usdhc2_200mhz: usdhc2grp200mhz {
 			>;
 		};
 
-		
+
 
 		pinctrl_wdog: wdoggrp {
 			fsl,pins = <
@@ -574,7 +574,7 @@ pinctrl_usdhc2_200mhz: usdhc2grp200mhz {
 				MX6UL_PAD_CSI_DATA06__ECSPI1_MOSI	0x100b1
 				MX6UL_PAD_CSI_DATA04__ECSPI1_SCLK	0x100b1
 				MX6UL_PAD_CSI_DATA05__GPIO4_IO26	0x80000000
-				MX6UL_PAD_SNVS_TAMPER2__GPIO5_IO02      0x1b0b1 
+				MX6UL_PAD_SNVS_TAMPER2__GPIO5_IO02      0x1b0b1
 			>;
 		};
 
@@ -584,4 +584,3 @@ pinctrl_usdhc2_200mhz: usdhc2grp200mhz {
 &snvs_rtc {
        status = "disabled";
 };
-
